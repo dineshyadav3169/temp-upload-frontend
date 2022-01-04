@@ -1,0 +1,12 @@
+<svg width="171" height="21" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Layer 1</title>
+  <text transform="matrix(0.901552 0 0 0.819698 3.54411 -1.46247)" stroke="null" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Assistant'" font-size="24" stroke-width="0" id="svg_6" y="21.00984" x="37.66369" fill="#000000">temp</text>
+  <text transform="matrix(0.594693 0 0 0.752489 33.5617 2.17759)" stroke="null" font-weight="bold" xml:space="preserve" text-anchor="start" font-family="'Assistant'" font-size="24" stroke-width="0" id="svg_7" y="20.01223" x="86.65977" fill="#0ea5e9">UPLOAD</text>
+  <ellipse ry="5.58333" rx="9.58333" id="svg_8" cy="14.25" cx="16.24992" fill="#0ea5e9"/>
+  <ellipse ry="5.41666" rx="8.91666" id="svg_10" cy="9.75" cx="11.08325" fill="#0ea5e9"/>
+  <ellipse ry="5.08333" rx="9.58333" id="svg_13" cy="9.08334" cx="20.08325" fill="#0ea5e9"/>
+  <ellipse ry="3.5" rx="8.24999" id="svg_17" cy="5.00001" cx="15.08325" fill="#0ea5e9"/>
+ </g>
+</svg>

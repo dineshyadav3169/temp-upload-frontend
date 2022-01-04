@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en-US">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+        <title>Temp - upload</title>
+        <meta name="robots" content="noindex, nofollow">
+        <link rel="canonical" href="https://temp-uploads.web.app"/>
+        <link rel="manifest" href="./manifest.json" />
+        
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="theme-color" content="#f7f7f7">
+        <link rel="stylesheet" href="/css/explorer.css"/>
+        <script defer src="js/connect/function.js"></script>
+        <script defer src="https://cdn01.boxcdn.net/platform/elements/13.0.0/en-US/explorer.js"></script>
+        
+        <script defer src="/__/firebase/8.6.8/firebase-app.js"></script>
+        <script defer src="/__/firebase/8.6.8/firebase-firestore.js"></script>
+        <script defer src="/__/firebase/init.js"></script>
+        <script defer src="js/connect/init.js"></script>
+        <style>
+          .be-search{
+              text-align: center;
+          }
+          .sessionWrap{
+              font-size: 1rem;
+              text-transform: uppercase;
+              font-weight: 500;
+          }
+          .sessionID{
+              padding: 0.3rem;
+              background: #e8f5ff;
+              border: 2px solid #0083ff;
+              border-radius: 5px;
+          }
+          .be-logo-placeholder{
+              border: 1px solid #2196f3;
+              border-radius: 5px;
+              cursor: pointer;
+              box-shadow: 3px 3px 0px 0px rgb(0 0 0 / 20%) !important;
+          }
+          .be a{
+              color: #000
+          }
+          .connectUI{
+              text-align: center;
+              position: relative;
+              top: 50%;
+              -webkit-transform: translateY(-50%);
+              -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+          }
+          
+          .inputboxs{
+              background: white;
+              padding: 13px 13px 15px 13px;;
+              border-radius: 12px;
+              box-shadow: 0 10px 16px 0 rgb(0 0 0 / 10%), 0 6px 20px 0 rgb(0 0 0 / 0%) !important;
+          }
+
+          .inputContainer{
+              position: absolute; height: 75vh;width: 94vw;
+          }
+        </style>
+        
+        <style>
+          /*error or pass*/
+          @-webkit-keyframes fadeON {  from {opacity: 0} to {opacity: 1;display:flex}}
+          @keyframes fadeON {from {opacity: 0}to {opacity: 1;display:flex}}
+          .fadeON{-webkit-animation-name: fadeON;-webkit-animation-duration: 0.7s;animation-name: fadeON;animation-duration: 0.7s;display: flex;}
+
+          .errorMessage {display:none;position:absolute;padding: 25px;background: white;border: 1px solid red;border-radius: 15px;font-size: 1.2rem;font-weight: 600;width: 85%;border-top-width: medium;z-index:20}
+      
+      </style>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script>
+          tailwind.config = {
+            theme: {
+              extend: {
+                // ...
+              },
+            },
+            plugins: [],
+          }          
+        </script>
+    </head>
+    <body style="">
+
+      <div>
+          <div id="errorMessage" class="fadeON errorMessage">
+              <span style="color: #eb5c5c;padding-right: 4px;"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#eb5c5c"><path d="M0 0h24v24H0V0z" fill="none"/><circle cx="12" cy="19" r="2"/><path d="M10 3h4v12h-4z"/></svg></span>
+              <span id="errorText" style="font-size: 1.3rem;"></span>
+          </div>
+      </div>
+
+      <div id="inputRoomKey">
+        <div class="min-h-screen bg-gray-50 py-6 flex flex-col justify-center relative overflow-hidden sm:py-12">
+          <img src="/css/beams.jpg" alt="" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 max-w-none" width="1308">
+          <div class="absolute inset-0 bg-[url(/css/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+          <div class="relative px-6 pt-10 pb-8 bg-white shadow-xl ring-1 ring-gray-900/5 sm:max-w-lg sm:mx-auto sm:rounded-lg sm:px-10">
+            <div class="max-w-md mx-auto">
+              <img src="/css/logo.png" class="h-6">
+              <div class="divide-y divide-gray-300/50">
+                <div class="py-8 text-base leading-7 space-y-6 text-gray-600">
+                  <p>An advanced file sharing system between devices, including support for things like:</p>
+                  <ul class="space-y-4">
+                    <li class="flex items-center">
+                      <svg class="w-6 h-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="11"></circle>
+                        <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none"></path>
+                      </svg>
+                      <p class="ml-4">
+                        File delete automaticly after
+                        <code class="text-sm font-bold text-gray-900">1 Hour</code>
+                      </p>
+                    </li>
+                    <li class="flex items-center">
+                      <svg class="w-6 h-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="11"></circle>
+                        <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none"></path>
+                      </svg>
+                      <p class="ml-4">
+                        Download file
+                        <code class="text-sm font-bold text-gray-900">in Browser</code>
+                      </p>
+                    </li>
+                    <li class="flex items-center">
+                      <svg class="w-6 h-6 flex-none fill-sky-100 stroke-sky-500 stroke-2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="11"></circle>
+                        <path d="m8 13 2.165 2.165a1 1 0 0 0 1.521-.126L16 9" fill="none"></path>
+                      </svg>
+                      <p class="ml-4">                
+                        <code class="text-sm font-bold text-gray-900">Sync</code>
+                        file to all device connected</p>
+                    </li>
+                  </ul>
+                  <div class="block sm:flex">
+                    <div class="m-2 flex justify-center text-center">
+                      <span id="newSession" class="cursor-pointer bg-sky-500 text-white justify-center w-full sm:w-fit p-2 rounded border border-sky-500 flex"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" class="pt-1 pr-1" width="24px" fill="#ffff"><path d="M0 0h24v24H0z" fill="none"></path><path d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4V7zm-1-5C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"></path></svg>New Session</span>
+                      <div id="optionproduct" class="hidden fixed p-5 bg-white shadow-2xl rounded">
+                        <a href="/host" class=" hover:bg-gray-100 bg-white text-black justify-center w-full sm:w-fit p-2 rounded flex"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" class="pt-1 pr-1" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z"/></svg>File Share</a>
+                        <a href="/texthost" class="hover:bg-gray-100 bg-white text-black justify-center w-full sm:w-fit p-2 rounded flex"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" class="pt-1 pr-1" width="24px" fill="#000000"><path d="M0 0h24v24H0z" fill="none"/><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>Text Host</a>
+                      </div>
+                    </div>
+                    <div class="group flex">
+                      <div class="m-2 flex border border-gray-400 rounded outline-none hover:border-gray-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="gray" class="ml-2 mt-2 pt-1"><path d="M20 5H4c-1.1 0-1.99.9-1.99 2L2 17c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm-9 3h2v2h-2V8zm0 3h2v2h-2v-2zM8 8h2v2H8V8zm0 3h2v2H8v-2zm-1 2H5v-2h2v2zm0-3H5V8h2v2zm9 7H8v-2h8v2zm0-4h-2v-2h2v2zm0-3h-2V8h2v2zm3 3h-2v-2h2v2zm0-3h-2V8h2v2z"></path><path d="M0 0h24v24H0zm0 0h24v24H0z" fill="none"></path></svg>
+                        <input id="roomId" type="text" autocomplete="off" class="w-40 max-w-full p-2 outline-none" placeholder="Enter Code">
+                      </div>
+                      <button id="connectRoom01" type="submit" class="hidden group-focus-within:block text-gray-400 mt-2 h-12 px-1 rounded text-sm" disabled>Join Now</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="pt-8 text-base leading-7 font-semibold">
+                  <p class="text-gray-900">Want to dig deeper into Privacy Policy?</p>
+                  <p>
+                    <a href="/policy" class="text-sky-500 hover:text-sky-600">Read it here →</a>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="container01"></div>
+    
+    <script>
+      let joincode = document.getElementById('roomId');
+      let joinsession = document.getElementById('connectRoom01');
+      let newSession = document.getElementById('newSession');
+      let optionproduct = document.getElementById('optionproduct');
+
+      joincode.addEventListener('keyup', function(e) {
+        if(joincode.value.length > 0) {
+          joinsession.disabled = false;
+          joinsession.classList.remove('text-gray-400');
+          joinsession.classList.add('text-sky-500');
+          joinsession.classList.add('hover:bg-gray-100');
+        } else {
+          joinsession.disabled = true;
+          joinsession.classList.add('text-gray-400');
+          joinsession.classList.remove('text-sky-500');
+          joinsession.classList.remove('hover:bg-gray-100');
+        }
+      });
+      newSession.addEventListener('click', function(e) {
+        optionproduct.classList.add('block');
+        optionproduct.classList.remove('hidden');
+      });
+      document.addEventListener('click', function(event) {
+        if(event.target!=newSession){
+          let isClickInsideElement = optionproduct.contains(event.target);
+          if(!optionproduct.classList.contains('hidden')) {
+            if(!isClickInsideElement) {
+              optionproduct.classList.remove('block');
+              optionproduct.classList.add('hidden');
+            }
+          }
+        }
+      });
+    </script>
+    <script>
+      window.addEventListener("load", () => {
+          if('serviceWorker' in navigator){
+              navigator.serviceWorker.register('./sw.js')
+                  .then(function(registration) {
+                      console.log('ServiceWorker registration successful with scope:',  registration.scope);
+                  })
+                  .catch(function(err){
+                      console.info("Service Worker Not Ready!")
+                  });
+          }
+      })
+    </script>
+    </body>
+</html>

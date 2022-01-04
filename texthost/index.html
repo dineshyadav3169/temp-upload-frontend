@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <title>Temp - upload</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="canonical" href="https://temp-uploads.web.app"/>
+    <link rel="manifest" href="./manifest.json" />
+    
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="theme-color" content="#f7f7f7">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            // ...
+          },
+        },
+        plugins: [],
+      }          
+    </script>
+  </head>
+  <body>
+
+    <div class="min-h-screen bg-gray-50 dark:bg-gray-600 py-4 flex flex-col justify-center relative overflow-hidden ">
+      <div class="absolute inset-0 bg-[url(texthost/img/grid.svg)] bg-center [mask-image:linear-gradient(180deg,white,rgba(255,255,255,0))]"></div>
+      <div class="relative px-2 pt-5 pb-8 sm:px-5 bg-white dark:bg-neutral-700 shadow-xl ring-1 ring-gray-900/5 mx-1 sm:mx-4 sm:rounded-lg ">
+        <div class="flex">
+            <div class="ml-3">
+              <img src="texthost/img/logo.png" alt="logo" class="h-6">
+            </div>
+            <div class="flex mr-3 mx-auto">
+              <a href="#" class="mx-1 sm:mx-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out" data-bs-toggle="tooltip" title="New Note">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="gray"><path d="M0 0h24v24H0z" fill="none"/><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              </a>
+              <button id="addpassword" class="mx-1 sm:mx-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out" data-bs-toggle="tooltip" title="Add Password">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="gray"><path d="M0 0h24v24H0z" fill="none"/><path d="M12 17c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm6-9h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6h1.9c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm0 12H6V10h12v10z"/></svg>
+              </button>
+              <a href="#" class="mx-1 sm:mx-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out" data-bs-toggle="tooltip" title="Spell Check">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="gray"><path d="M0 0h24v24H0z" fill="none"/><path d="M12.45 16h2.09L9.43 3H7.57L2.46 16h2.09l1.12-3h5.64l1.14 3zm-6.02-5L8.5 5.48 10.57 11H6.43zm15.16.59l-8.09 8.09L9.83 16l-1.41 1.41 5.09 5.09L23 13l-1.41-1.41z"/></svg>
+              </a>
+              <a href="#" class="mx-1 sm:mx-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out" data-bs-toggle="tooltip" title="Change Font">
+                <svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="gray"><path d="M0 0h24v24H0z" fill="none"/><path d="M9 4v3h5v12h3V7h5V4H9zm-6 8h3v7h3v-7h3V9H3v3z"/></svg>
+              </a>
+              <button id="darkMode" class="mx-1 sm:mx-2 hover:bg-gray-100 rounded transition duration-150 ease-in-out" data-bs-toggle="tooltip" title="Dark Mode">        
+                <svg xmlns="http://www.w3.org/2000/svg" enable-background="new 0 0 24 24" height="20px" viewBox="0 0 24 24" width="20px" fill="gray"><rect fill="none" height="24" width="24"/><path d="M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36c-0.98,1.37-2.58,2.26-4.4,2.26 c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"/></svg>
+              </button>
+            </div>
+        </div>
+
+        <div>
+          <textarea id="textcenter" style="font-size:1rem" class="mt-4 border dark:bg-zinc-800 bg-white dark:text-white text-black rounded w-full outline-slate-300 dark:outline-black resize-none p-2 " name="" id="" cols="30" rows="17"></textarea>
+          <div class="absolute right-7 bottom-36">
+            <button id="ZoomIN" title="ZoomIN" class="bg-gray-100 mr-1 rounded p-1 text-sm text-gray-500 hover:text-gray-900">+</button>
+            <button id="ZoomOUT" title="ZoomOUT" class="bg-gray-100 mr-1 rounded p-1 text-sm text-gray-500 hover:text-gray-900">-</button>
+            <button class="bg-gray-100 mr-1 rounded p-1 text-sm text-gray-500 hover:text-gray-900">Raw</button>
+            <button class="bg-gray-100 mr-1 rounded p-1 text-sm text-gray-500 hover:text-gray-900">Code</button>
+          </div>
+        </div>
+        <div class="flex justify-center mt-3">
+          <a href="#" class="mx-1 rounded border w-fit text-gray-500 dark:text-white text-sm flex p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24" width="19px" fill="gray"><path d="M0 0h24v24H0z" fill="none"/><path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/></svg>
+            <p class="ml-1">Editable LInk</p>
+          </a>
+          <a href="#" class="mx-1 rounded border w-fit text-gray-500 dark:text-white text-sm flex p-1">
+            <svg xmlns="http://www.w3.org/2000/svg" height="19px" viewBox="0 0 24 24" width="15px" fill="gray"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+            <p class="ml-1">Share</p>
+          </a>
+        </div>
+        <div class="flex justify-center mt-2">
+          <div class="flex mx-2">
+            <label class="text-gray-800 dark:text-white text-sm mr-1">Words: </label>
+            <span id="wordcount" class="text-sm text-gray-700 dark:text-white">0</span>
+          </div>
+          <div class="flex mx-2">
+            <label class="text-gray-800 dark:text-white text-sm mr-1">Characters: </label>
+            <span id="characterscount" class="text-sm text-gray-700 dark:text-white">0</pan>
+          </div>
+          <div class="flex mx-2">
+            <label class="text-gray-800 dark:text-white text-sm mr-1">Views: </label>
+            <span class="text-sm text-gray-700 dark:text-white">0</span>
+          </div>      
+        </div>
+    
+        <div class="flex justify-center mt-2">
+          <div class="flex mx-2">
+            <label class="text-gray-700 dark:text-white text-xs mr-1">Last Update: </label>
+            <span class="text-xs text-gray-500 dark:text-white">1 Second ago</span>
+          </div>
+        </div>
+    
+        <div id="popuppassword" class="w-full hidden p-10 fixed flex top-1 h-screen justify-center items-center z-10">
+          <div class="text-center bg-gray-300 p-10 rounded"> 
+            <input type="password" id="password" class="border border-sky-500 rounded w-full p-2 text-gray-700 dark:text-white mb-2" placeholder="Enter Password">
+            <div class="flex w-full">
+              <button id="savepassword" class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 w-6/12 rounded mr-2">Save</button>
+              <button id="canclepopup" class="bg-sky-500 hover:bg-sky-700 text-white font-bold py-2 px-4 w-6/12 rounded">Cancel</button>
+            </div>
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+    <script>
+      let darkMode = document.getElementById('darkMode');
+      let zoomIN = document.getElementById('ZoomIN');
+      let zoomOUT = document.getElementById('ZoomOUT');
+      let textcenter = document.getElementById('textcenter');
+      let wordcount = document.getElementById('wordcount');
+      let characterscount = document.getElementById('characterscount');
+      let savepassword = document.getElementById('savepassword');
+      let canclepopup = document.getElementById('canclepopup');
+      let popUpPassword = document.getElementById('popuppassword');
+      let addpassword = document.getElementById('addpassword');
+    
+      darkMode.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.classList.add('dark')
+            console.log("kp")
+        } else {
+          document.documentElement.classList.remove('dark')
+        }
+      });
+      zoomIN.addEventListener('click', () => {
+        textcenter.style.fontSize =  (parseFloat(textcenter.style.fontSize) + 0.2) + 'rem';
+      });
+      zoomOUT.addEventListener('click', () => {
+        textcenter.style.fontSize =  (parseFloat(textcenter.style.fontSize) - 0.2) + 'rem';
+      });
+      textcenter.addEventListener('input', (e) => {
+        wordcount.innerText = e.target.value.split(' ').length;
+        characterscount.innerText = e.target.value.length;
+      });
+      addpassword.addEventListener('click', () => {
+        popUpPassword.style.display = 'flex';
+      });
+      canclepopup.addEventListener('click', () => {
+        addpassword.value = '';
+        popUpPassword.style.display = 'none';
+      });
+    </script>
+  </body>
+</html>
